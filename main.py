@@ -1,7 +1,17 @@
 from fastapi import FastAPI
 import requests
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allow all origins (you can change this later)
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all HTTP methods
+    allow_headers=["*"],  # Allow all headers
+)
 
 API_KEY = "b69bec2b622000d8c55417a830f7c68a" 
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
